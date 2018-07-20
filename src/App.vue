@@ -1,29 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="app-phone">
+      <div class="phone-header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_gram_logo_cp.png" />
+      </div>
+
+      <phone-body></phone-body>
+
+      <div class="phone-footer">
+        <div class="home-cta">
+          <i class="fas fa-home fa-lg"></i>
+        </div>
+        <div class="upload-cta">
+          <i class="far fa-plus-square fa-lg"></i>
+        </div>
+      </div>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import PhoneBody from './components/PhoneBody'
+
+export default {
+  name: 'App',
+  components: {
+    'phone-body': PhoneBody
   }
 }
+</script>
+
+
+<style lang="scss" src="./styles/app.scss">
+// imported styles
 </style>
