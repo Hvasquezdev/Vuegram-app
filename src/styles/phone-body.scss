@@ -36,8 +36,8 @@
 }
 
 .filter-container {
-  height: 220px;
-  padding: 30px 10px;
-  white-space: nowrap;
-  overflow-x: scroll;
+  height: 220px !important;
+  padding: 30px 10px !important;
+  white-space: nowrap !important;
+  overflow-x: scroll !important;
 }
