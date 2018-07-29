@@ -3,7 +3,7 @@
     <p>{{filter.name}}</p>
     <div class="img"
       :class="filter.name"
-      :style="{ backgroundImage: 'url(' + image + ')' }"
+      :style="{ backgroundImage: `url(${image})` }"
       @click="setFilter(filter.name)">
     </div>
   </div>

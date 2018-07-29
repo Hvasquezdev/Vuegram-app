@@ -6,6 +6,7 @@ html,
 body,
 #app {
   height: 100%;
+  width: 100%;
   margin: 0;
   overflow: hidden;
   background: #e6ecf1;
@@ -21,7 +22,8 @@ body,
 .app-phone {
   background-color: white;
   height: 100%;
-  width: 675px;
+  width: 100%;
+  max-width: 1000px;
   overflow: hidden;
 }
 
@@ -147,26 +149,27 @@ body,
 }
 
 // Media Queries
-@media (max-width: $small) {
-  #app {
-    height: 100% !important;
-    padding-top: 0 !important;
-  }
+// @media (max-width: $small) {
+//   #app {
+//     height: 100% !important;
+//     padding-top: 0 !important;
+//   }
 
-  .app-phone,
-  .app-phone-scroll-cover {
-    height: 100% !important;
-    width: 100% !important;
-  }
+//   .app-phone,
+//   .app-phone-scroll-cover {
+//     height: 100% !important;
+//     width: 100% !important;
+//   }
 
-  .phone-header,
-  .phone-footer {
-    width: 100% !important;
-  }
-}
+//   .phone-header,
+//   .phone-footer {
+//     width: 100% !important;
+//   }
+// }
 
-@media (max-height: $small) {
-  .app-phone {
-    transform: scale(0.6);
-  }
-}
+// @media (max-height: $small) {
+//   .app-phone {
+//     height: 100% !important;
+//     width: 100% !important;
+//   }
+// }

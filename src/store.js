@@ -47,6 +47,9 @@ export default new Vuex.Store({
     },
     setPostCaption: (state, payload) => {
       state.caption = payload
+    },
+    setNewPost: (state, payload) => {
+      state.posts.unshift(payload)
     }
   },
   actions: {
@@ -61,6 +64,15 @@ export default new Vuex.Store({
     },
     setPostCaption: ({commit}, payload) => {
       commit('setPostCaption', payload)
+    },
+    setNewPost: ({commit}, payload) => {
+      commit('setNewPost', payload)
+    },
+    resetValues: ({commit}) => {
+      commit('setPostImage', '');
+      commit('setPostFilter', '');
+      commit('setPostCaption', '');
+      commit('setStep', 1);
     }
   }
 })

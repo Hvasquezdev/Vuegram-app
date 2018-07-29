@@ -8,6 +8,16 @@
            @click="goToHome">
             Cancel
         </a>
+        <a class="next-cta"
+           v-if="step === 2"
+           @click="next">
+            Next
+        </a>
+        <a class="next-cta"
+           v-if="step === 3"
+           @click="sharePost">
+            Share
+        </a>
       </div>
 
       <phone-body></phone-body>
@@ -34,8 +44,7 @@
 <script>
 import PhoneBody from './components/PhoneBody'
 
-import { mapGetters } from 'vuex'
-import store from './store.js'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'App',
@@ -43,28 +52,47 @@ export default {
     'phone-body': PhoneBody
   },
   methods: {
-    uploadImage: evt => {
+    ...mapActions({
+      goToHome: 'resetValues',
+      setPostImage: 'setPostImage',
+      setStep: 'setStep',
+      setPost: 'setNewPost'
+    }),
+    uploadImage (evt) {
       const files = evt.target.files;
       if (!files.length) return;
       const reader = new FileReader();
       reader.readAsDataURL(files[0]);
       reader.onload = evt => {
-        store.dispatch('setPostImage', evt.target.result);
-        store.dispatch('setStep', 2);
+        this.setPostImage(evt.target.result);
+        this.setStep(2);
       };
       // This is to enable reuploading of same files in Chrome
       document.querySelector("#file").value = "";
     },
-    goToHome: () => {
-      store.dispatch('setPostImage', '');
-      store.dispatch('setPostFilter', '');
-      store.dispatch('setPostCaption', '');
-      store.dispatch('setStep', 1);
+    next () {
+      this.setStep(3);
+    },
+    sharePost () {
+        const post = {
+          username: "Hector_Vue",
+          userImage:
+            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_lg_bg.png",
+          postImage: this.image,
+          likes: 0,
+          caption: this.caption,
+          filter: this.filterType
+        };
+        this.setPost(post);
+        this.goToHome();
     }
   },
   computed: {
     ...mapGetters({
-      step: 'getStep'
+      step: 'getStep',
+      image: 'getPostImage',
+      caption: 'getPostCaption',
+      filterType: 'getPostFilter'
     })
   }
 }

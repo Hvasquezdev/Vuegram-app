@@ -1,5 +1,6 @@
 <template>
   <div class="vuegram-post">
+    <hr v-if="index > 0">
     <div class="header level">
         <div class="level-left">
           <figure class="image is-32x32">
@@ -10,7 +11,7 @@
     </div>
     <div class="image-container"
       :class="post.filter"
-      :style="{ backgroundImage: 'url(' + post.postImage + ')' }">
+      :style="{ backgroundImage: `url(${post.postImage})` }">
     </div>
     <div class="content">
       <div class="heart">
@@ -19,7 +20,7 @@
           @click="like"></i>
       </div>
       <p class="likes">{{post.likes}} likes</p>
-      <p class="caption"><span>{{post.username}}</span> {{post.caption}}</p>
+      <p class="caption"><span>{{post.username}}: </span> {{post.caption}}</p>
     </div>
   </div>
 </template>
@@ -28,7 +29,8 @@
 export default {
   name: 'VuegramPost',
   props: {
-    post: Object
+    post: Object,
+    index: Number
   },
   methods: {
     like() {
